@@ -1,9 +1,13 @@
 'use strict';
 
-app.controller('LoginCtrl', function($log, LoginFactory, $scope) {
+app.controller('LoginCtrl', function($state, $log, LoginFactory, $scope) {
   $scope.submitLogin = function() {
     LoginFactory.login($scope.login)
-    .then($log.log)
-    .catch($log.error);
+    .then(function() {
+      $state.go('stories');
+    })
+    .catch(function(error) {
+      $state.go('login');
+    });
   };
 });

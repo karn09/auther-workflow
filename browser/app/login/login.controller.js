@@ -1,8 +1,8 @@
 'use strict';
 
-app.controller('LoginCtrl', function($state, $log, LoginFactory, $scope) {
+app.controller('LoginCtrl', function($state, $log, AuthFactory, $scope) {
   $scope.submitLogin = function() {
-    LoginFactory.login($scope.login)
+    AuthFactory.login($scope.login)
     .then(function() {
       $state.go('stories');
     })
